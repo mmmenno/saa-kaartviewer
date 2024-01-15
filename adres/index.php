@@ -1,5 +1,47 @@
 <?php
 
+include("../_infra/functions.php");
+
+$adressen = json_decode($_GET['adressen'],true);
+$params = json_decode($_GET['params'],true);
+
+//print_r($adressen);
+//print_r($params);
+
+$addressresults = array(); 
+
+if(isset($params['marktkaarten'])){
+    include("query-marktkaarten.php");
+}
+
+
+
+
+
+
+
+
+
+//print_r($addressresults);
+
+echo '<h3>Op dit adres:</h3>';
+
+foreach ($addressresults as $k => $v) {
+  echo '<div class="item">';
+  echo '<h3>' . $v['label'] . '</h3>';
+  if(strlen($v['persondescription'])){
+    echo '<span class="pd-desc">' . $v['persondescription'] . '</span><br />';
+  }
+  if(strlen($v['deeddescription'])){
+    echo '<span class="dd-desc">' . $v['deeddescription'] . '</span><br />';
+  }
+  echo '<a target="_blank" class="resourcelink" href="' . $v['link'] . '">link</a>';
+  echo '<a target="_blank" class="adreslink" href="' . $v['adresuri'] . '">' . str_replace('https://adamlink.nl/geo/address/','',$v['adresuri']) . '</a>';
+  echo "</div>\n";
+}
+
+die;
+
 if(isset($_GET['adres'])){
   $adres = $_GET['adres'];
 }else{

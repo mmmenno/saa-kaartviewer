@@ -81,6 +81,7 @@ if(!isset($_GET['bron'])){
 
 <div id="searchresults">
 	<div id="searchinfo"></div>
+	<div id="info-with-address"></div>
 </div>
 
 

@@ -24,24 +24,35 @@ SELECT ?aladr (MAX(?wktspatial) as ?wkt) (GROUP_CONCAT(DISTINCT ?adrstr;SEPARATO
   ?deed rico:hasOrHadSubject ?po . 
   ';
   
-  if(strlen($_GET['voornaam']) || strlen($_GET['achternaam'])){
+  if(strlen($_GET['voornaam']) || strlen($_GET['achternaam']) || strlen($_GET['tussenvoegsel'])){
   	$sparql .= '?po saa:relatedPersonObservation/pnv:hasName ?pnvname .
-				?pnvname pnv:baseSurname ?basesurname . 
 				';
   }
 
   if(strlen($_GET['voornaam'])){
-  	$sparql .= '?po saa:relatedPersonObservation/pnv:hasName ?pnvname .
-				?pnvname pnv:givenName ?givenname . 
+  	$sparql .= '?pnvname pnv:givenName ?givenname . 
 				FILTER (bif:contains (?givenname, "\'' . $_GET['voornaam'] . '\'")) .
 				';
   }
 
+  if(strlen($_GET['tussenvoegsel'])){
+  	$sparql .= '?pnvname pnv:surnamePrefix ?prefix . 
+				FILTER (bif:contains (?prefix, "\'' . $_GET['tussenvoegsel'] . '\'")) .
+				';
+  }
+
   if(strlen($_GET['achternaam'])){
-  	$sparql .= '?po saa:relatedPersonObservation/pnv:hasName ?pnvname .
-				?pnvname pnv:baseSurname ?basesurname . 
+  	$sparql .= '?pnvname pnv:baseSurname ?basesurname . 
 				#FILTER contains(LCASE(?basesurname), "' . strtolower($_GET['achternaam']) . '") . 
 				FILTER (bif:contains (?basesurname, "\'' . $_GET['achternaam'] . '\'")) .
+				';
+  }
+
+  if(strlen($_GET['geboortedatum'])){
+  	$parts = explode("-",$_GET['geboortedatum']);
+  	$geboortedatum = $parts[2] . "-" . $parts[1] . "-" . $parts[0];
+  	$sparql .= '?po saa:relatedPersonObservation/schema:birthDate ?birth . 
+				FILTER (?birth = "' . $geboortedatum . '"^^xsd:date) .
 				';
   }
 
@@ -62,32 +73,34 @@ $data = json_decode($json,true);
 //print_r($data);
 //echo count($data['results']['bindings']);
 
-if(count($data['results']['bindings']) > $limitperbron){
+if(isset($data['results']['bindings']) && count($data['results']['bindings']) > $limitperbron){
 	$limitbereikt = true;
 }
 
 
-foreach ($data['results']['bindings'] as $key => $value) {
+if(isset($data['results']['bindings'])){
+	foreach ($data['results']['bindings'] as $key => $value) {
 
-  $adr = str_replace("https://adamlink.nl/geo/address/","",$value['aladr']['value']);
+	  $adr = str_replace("https://adamlink.nl/geo/address/","",$value['aladr']['value']);
 
-  $wkt = $value['wkt']['value'];
-  if(!isset($points[$wkt])){
-    $points[$wkt] = array(
-      "cnt" => $value['residents']['value'],
-      "labels" => explode(",",$value['labels']['value']),
-      "adressen" => array($adr)
-    );
-  }else{
-    $points[$wkt]['cnt'] = $points[$wkt]['cnt'] + $value['residents']['value'];
-    
-    $points[$wkt]['labels'][] = $value['labels']['value'];
-    $points[$wkt]['labels'] = array_unique($points[$wkt]['labels']);
+	  $wkt = $value['wkt']['value'];
+	  if(!isset($points[$wkt])){
+	    $points[$wkt] = array(
+	      "cnt" => $value['residents']['value'],
+	      "labels" => explode(",",$value['labels']['value']),
+	      "adressen" => array($adr)
+	    );
+	  }else{
+	    $points[$wkt]['cnt'] = $points[$wkt]['cnt'] + $value['residents']['value'];
+	    
+	    $points[$wkt]['labels'][] = $value['labels']['value'];
+	    $points[$wkt]['labels'] = array_unique($points[$wkt]['labels']);
 
-    $points[$wkt]['adressen'][] = $adr;
-    $points[$wkt]['adressen'] = array_unique($points[$wkt]['adressen']);
+	    $points[$wkt]['adressen'][] = $adr;
+	    $points[$wkt]['adressen'] = array_unique($points[$wkt]['adressen']);
 
-  }
+	  }
+	}
 }
 
 //print_r($points);

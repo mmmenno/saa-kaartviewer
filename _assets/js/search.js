@@ -2,7 +2,9 @@ $(document).ready(function() {
 
     $("#searchform").on( "submit", function( event ) {
         event.preventDefault();
+        $('#searchresults').hide();
         refreshMap();
+        $(".btn-primary").blur();
     });
 
 });
@@ -85,7 +87,7 @@ function refreshMap(){
 
             lps.addData(jsonData).bringToFront();
 
-            map.fitBounds(lps.getBounds());
+            //map.fitBounds(lps.getBounds());
 
             var geojsonprops = jsonData['properties'];
             console.log(geojsonprops);
@@ -95,8 +97,10 @@ function refreshMap(){
             if(geojsonprops['limited']){
                 infotext += ', <strong class="warning">zoom in voor meer</strong>';
             }
+            $('#info-with-address').html('');
             $('#searchinfo').html(infotext);
             $('#searchresults').show();
+            $('#searchinfo').show();
         },
         error: function() {
             console.log('Error loading data');
@@ -150,7 +154,14 @@ function whenClicked(){
     });
 
     var props = $(this)[0].feature.properties;
-    $("#main").load('bronnen/marktkaarten/adres.php?adressen=' + JSON.stringify(props['adressen']));
+    console.log(props);
+    urlparams = getParams();
+    delete urlparams["bbox"];
+    console.log(urlparams);
+
+    $('#searchinfo').hide();
+
+    $("#info-with-address").load('adres/index.php?adressen=' + JSON.stringify(props['adressen']) + '&params=' +  JSON.stringify(urlparams));
 
 
 }

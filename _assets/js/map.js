@@ -5,8 +5,12 @@ $(document).ready(function() {
 
     document.body.onkeydown = function(e){
         if(e.keyCode == 32){
-            //e.preventDefault();
-            tileLayer.setOpacity(0)
+            if(!$("input").is(":focus")){
+                e.preventDefault();
+                tileLayer.setOpacity(0);
+            }
+            
+            
         }
     };
     document.body.onkeyup = function(e){
