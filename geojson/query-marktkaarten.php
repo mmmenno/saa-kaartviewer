@@ -2,6 +2,9 @@
 
 
 $sparql = '
+PREFIX bag: <http://bag.basisregistraties.overheid.nl/def/bag#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX hg: <http://rdf.histograph.io/>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 PREFIX bif: <http://www.openlinksw.com/schemas/bif#>
 PREFIX geo: <http://www.opengis.net/ont/geosparql#>
@@ -19,7 +22,23 @@ SELECT ?aladr (MAX(?wktspatial) as ?wkt) (GROUP_CONCAT(DISTINCT ?adrstr;SEPARATO
   ?adr a saa:Address .
   ?adr dcterms:title ?adrstr .
   ?adr owl:sameAs ?aladr .
-  ?aladr schema:geoContains ?lp .
+  ';
+
+  if(strlen($_GET['straat'])){
+  	$sparql .= '?aladr hg:liesIn ?alstreet .
+  			?alstreet skos:altLabel ?streetname . 
+				FILTER (bif:contains (?streetname, "\'' . $_GET['straat'] . '\'")) .
+				';
+  }
+
+  
+  if(strlen($_GET['huisnr'])){
+  	$sparql .= '?aladr bag:huisnummer "' . $_GET['huisnr'] . '"^^xsd:integer .
+				';
+  }
+
+  
+  $sparql .= '?aladr schema:geoContains ?lp .
   ?lp geo:asWKT ?wktspatial .
   ?deed rico:hasOrHadSubject ?po . 
   ';

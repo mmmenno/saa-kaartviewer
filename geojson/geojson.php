@@ -4,6 +4,13 @@
 include("../_infra/functions.php");
 
 //print_r($_GET);
+$_GET['straat'] = str_replace("*","",$_GET['straat']); // 'begins with' fucks up endpoint when big bounding box
+
+
+
+
+
+
 
 /* 
     $points is de array waar alle gevonden adressen inkomen alvorens er geojson van te maken.
@@ -34,9 +41,17 @@ $limitperbron = floor($limit/$bronnen);
 $limitbereikt = false;
 
 
+
+
 if(isset($_GET['marktkaarten'])){
     include("query-marktkaarten.php");
 }
+
+if(isset($_GET['beeldbank'])){
+    include("query-beeldbank.php");
+}
+
+
 
 $colprops = array(
     "limited" => $limitbereikt,
