@@ -140,8 +140,15 @@ a:hover{
 .item{
 	margin-top: 12px;
 	padding-top: 12px;
+	clear: both;
 	line-height: 1em;
 	border-top: 1px solid #000;
+}
+.item img{
+	width: 80px;
+	float: left;
+	margin-right: 10px;
+	margin-bottom: 3px;
 }
 .pd-desc, .dd-desc{
 	font-size: 12px;

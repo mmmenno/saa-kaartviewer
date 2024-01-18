@@ -14,6 +14,10 @@ if(isset($params['marktkaarten'])){
     include("query-marktkaarten.php");
 }
 
+if(isset($params['beeldbank'])){
+    include("query-beeldbank.php");
+}
+
 
 
 
@@ -24,11 +28,14 @@ if(isset($params['marktkaarten'])){
 
 //print_r($addressresults);
 
-echo '<h3>Op dit adres:</h3>';
+echo '<h3>Bij dit adres:</h3>';
 
 foreach ($addressresults as $k => $v) {
   echo '<div class="item">';
   echo '<h3>' . $v['label'] . '</h3>';
+  if(isset($v['img'])){
+    echo '<img src="' . $v['img'] . '" />';
+  }
   if(strlen($v['persondescription'])){
     echo '<span class="pd-desc">' . $v['persondescription'] . '</span><br />';
   }
