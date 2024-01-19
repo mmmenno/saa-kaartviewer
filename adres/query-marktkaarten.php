@@ -80,15 +80,15 @@ if(isset($data['results']['bindings'])){
 		$marktkaart['label'] = "Marktkaart " . $rec['litname']['value'];
 
 		if(isset($rec['vergunningdatum']) && isset($rec['standplaats'])){
-			$marktkaart['deeddescription'] = "Vergunning afgegeven op " . $rec['vergunningdatum']['value'] . " voor standplaats " . $rec['standplaats']['value'];
+			$marktkaart['deeddescription'] = "Vergunning afgegeven op " . dutchdate($rec['vergunningdatum']['value']) . " voor standplaats " . $rec['standplaats']['value'];
 		}elseif(isset($rec['vergunningdatum'])){
-			$marktkaart['deeddescription'] = "Vergunning afgegeven op " . $rec['vergunningdatum']['value'];
+			$marktkaart['deeddescription'] = "Vergunning afgegeven op " . dutchdate($rec['vergunningdatum']['value']);
 		}if(isset($rec['standplaats'])){
 			$marktkaart['deeddescription'] = "Vergunning voor standplaats " . $rec['standplaats']['value'];
 		}
 
 		if(isset($rec['birth']) && isset($rec['adrstr'])){
-			$marktkaart['persondescription'] = "Geboren op " . $rec['birth']['value'] . ", wonende " . $rec['adrstr']['value'];
+			$marktkaart['persondescription'] = "Geboren op " . dutchdate($rec['birth']['value']) . ", wonende " . $rec['adrstr']['value'];
 		}elseif(isset($rec['adrstr'])){
 			$marktkaart['persondescription'] = "Wonende " . $rec['adrstr']['value'];
 		}

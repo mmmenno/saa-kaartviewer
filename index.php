@@ -41,7 +41,10 @@ if(!isset($_GET['bron'])){
 		</div>
 
 		<span class="small">geboortedatum</span><br />
-		<input style="width:130px; margin-bottom: 12px;" type="text" name="geboortedatum" placeholder="dd-mm-jjjj" class="form-control" />
+
+		<div class="input-group">
+			<input style="width:130px;" type="text" name="geboortedatum" placeholder="dd-mm-jjjj" class="form-control" />
+		</div>
 		
 		
 		

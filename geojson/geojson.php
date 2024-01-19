@@ -51,6 +51,10 @@ if(isset($_GET['beeldbank'])){
     include("query-beeldbank.php");
 }
 
+if(isset($_GET['joodsmonument'])){
+    include("query-jm.php");
+}
+
 
 
 $colprops = array(

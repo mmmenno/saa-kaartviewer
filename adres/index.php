@@ -18,6 +18,10 @@ if(isset($params['beeldbank'])){
     include("query-beeldbank.php");
 }
 
+if(isset($params['joodsmonument'])){
+    include("query-jm.php");
+}
+
 
 
 
@@ -33,13 +37,13 @@ echo '<h3>Bij dit adres:</h3>';
 foreach ($addressresults as $k => $v) {
   echo '<div class="item">';
   echo '<h3>' . $v['label'] . '</h3>';
-  if(isset($v['img'])){
+  if(isset($v['img']) && strlen($v['img'])){
     echo '<img src="' . $v['img'] . '" />';
   }
-  if(strlen($v['persondescription'])){
+  if(isset($v['persondescription']) && strlen($v['persondescription'])){
     echo '<span class="pd-desc">' . $v['persondescription'] . '</span><br />';
   }
-  if(strlen($v['deeddescription'])){
+  if(isset($v['deeddescription']) && strlen($v['deeddescription'])){
     echo '<span class="dd-desc">' . $v['deeddescription'] . '</span><br />';
   }
   echo '<a target="_blank" class="resourcelink" href="' . $v['link'] . '">link</a>';

@@ -25,10 +25,6 @@ SELECT ?aladr ?bbrec ?thumb ?doctype ?creationdate ?title ?agentrectitle WHERE {
   ?bbrec rico:title ?title .
   ?bbrec rico:creationDate/rico:textualValue ?creationdate .
   ?bbrec rico:hasDocumentaryFormType/skos:prefLabel ?doctype .
-  ?bbrec saa:hasCreator ?creator .
-  ?creator saa:hasAgent ?agent .
-  ?agentcontext mem:hasRecord ?agent .
-  ?agentcontext dct:title ?agentrectitle .
   ';
 
   if(strlen($params['voornaam']) || strlen($params['achternaam']) || strlen($params['tussenvoegsel'])){
@@ -45,7 +41,19 @@ SELECT ?aladr ?bbrec ?thumb ?doctype ?creationdate ?title ?agentrectitle WHERE {
   	}
   	$searchname = implode(" ",$naam);
 
-  	$sparql .= 'FILTER (bif:contains (?agentrectitle, "\'' . $searchname . '\'")) .
+  	$sparql .= '?bbrec saa:hasCreator ?creator .
+							  ?creator saa:hasAgent ?agent .
+							  ?agentcontext mem:hasRecord ?agent .
+							  ?agentcontext dct:title ?agentrectitle .
+							  FILTER (bif:contains (?agentrectitle, "\'' . $searchname . '\'")) .
+				';
+  }else{
+  	$sparql .= 'optional{
+  							?bbrec saa:hasCreator ?creator .
+							  ?creator saa:hasAgent ?agent .
+							  ?agentcontext mem:hasRecord ?agent .
+							  ?agentcontext dct:title ?agentrectitle .
+				}
 				';
   }
   
@@ -80,6 +88,8 @@ if(isset($data['results']['bindings'])){
 			$afb['persondescription'] = $rec['doctype']['value'] . " van " . $rec['agentrectitle']['value'];
 		}elseif(isset($rec['agentrectitle'])){
 			$afb['persondescription'] = "vervaardiger: " . $rec['agentrectitle']['value'];
+		}elseif(isset($rec['doctype'])){
+			$afb['persondescription'] = $rec['doctype']['value'];
 		}
 
 		$afb['link'] = str_replace("https://ams-migrate.memorix.io/resources/records/","https://archief.amsterdam/beeldbank/detail/",$rec['bbrec']['value']);

@@ -51,9 +51,9 @@ function refreshMap(){
             lps = L.geoJson(null, {
                 pointToLayer: function (feature, latlng) { 
 
-                    var markertitle = feature.properties.cnt + ' resultaten in'
+                    var markertitle = feature.properties.cnt + ' resultaten bij'
                     if(feature.properties.cnt == 1){
-                        var markertitle = feature.properties.cnt + ' resultaat in'
+                        var markertitle = feature.properties.cnt + ' resultaat bij'
                     }
                     $.each(feature.properties.labels,function(index,value){
                         markertitle += "<br />" + value;
