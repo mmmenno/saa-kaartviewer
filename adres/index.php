@@ -8,6 +8,21 @@ $params = json_decode($_GET['params'],true);
 //print_r($adressen);
 //print_r($params);
 
+// sometimes (only in diamantwerkers, really), we need to translate locationpoints to addressid
+$lps = array();
+foreach($adressen as $adres){
+    if(substr($adres, 0,1) != "A"){
+        $lps[] = $adres;
+        if (($key = array_search($adres, $adressen)) !== false) {
+            unset($adressen[$key]);
+        }
+    }
+}
+if(count($lps) > 0){
+  include("query-adresids-with-lps.php");
+}
+
+
 $addressresults = array(); 
 
 if(isset($params['marktkaarten'])){
@@ -20,6 +35,11 @@ if(isset($params['beeldbank'])){
 
 if(isset($params['joodsmonument'])){
     include("query-jm.php");
+}
+
+if(isset($params['diamantwerkers'])){
+    include("query-lps-with-adresids.php");
+    include("query-diamantwerkers.php");
 }
 
 

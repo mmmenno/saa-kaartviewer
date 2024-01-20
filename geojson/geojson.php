@@ -55,6 +55,10 @@ if(isset($_GET['joodsmonument'])){
     include("query-jm.php");
 }
 
+if(isset($_GET['diamantwerkers'])){
+    include("query-diamantwerkers.php");
+}
+
 
 
 $colprops = array(
