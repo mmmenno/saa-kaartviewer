@@ -21,7 +21,7 @@ PREFIX dct: <http://purl.org/dc/terms/>
 PREFIX pnv: <https://w3id.org/pnv#>
 PREFIX rt: <https://ams-migrate.memorix.io/resources/recordtypes/>
 
-SELECT ?aladr ?label (MAX(?wkt) AS ?wkt) (COUNT(DISTINCT ?bbrec) AS ?bbcount) WHERE {
+SELECT ?aladr ?label (MAX(?lp) as ?lp) (MAX(?wkt) AS ?wkt) (COUNT(DISTINCT ?bbrec) AS ?bbcount) WHERE {
   ?bbrec a rt:Image .
   ';
 
@@ -96,20 +96,23 @@ if(isset($data['results']['bindings'])){
 	  $adr = str_replace("https://adamlink.nl/geo/address/","",$value['aladr']['value']);
 
 	  $wkt = $value['wkt']['value'];
-	  if(!isset($points[$wkt])){
-	    $points[$wkt] = array(
+	  
+	  $lp = str_replace("https://adamlink.nl/geo/lp/","",$value['lp']['value']);
+	  if(!isset($points[$lp])){
+	    $points[$lp] = array(
 	      "cnt" => $value['bbcount']['value'],
 	      "labels" => array($value['label']['value']),
-	      "adressen" => array($adr)
+	      "adressen" => array($adr),
+	      "wkt" => $wkt
 	    );
 	  }else{
-	    $points[$wkt]['cnt'] = $points[$wkt]['cnt'] + $value['bbcount']['value'];
+	    $points[$lp]['cnt'] = $points[$lp]['cnt'] + $value['bbcount']['value'];
 	    
-	    $points[$wkt]['labels'][] = $value['label']['value'];
-	    $points[$wkt]['labels'] = array_unique($points[$wkt]['labels']);
+	    $points[$lp]['labels'][] = $value['label']['value'];
+	    $points[$lp]['labels'] = array_unique($points[$lp]['labels']);
 
-	    $points[$wkt]['adressen'][] = $adr;
-	    $points[$wkt]['adressen'] = array_unique($points[$wkt]['adressen']);
+	    $points[$lp]['adressen'][] = $adr;
+	    $points[$lp]['adressen'] = array_unique($points[$lp]['adressen']);
 
 	  }
 	}

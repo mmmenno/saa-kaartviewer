@@ -75,7 +75,7 @@ foreach ($points as $key => $value) {
     
     $adres = array("type"=>"Feature");
 
-    $wkt = $key;
+    $wkt = $value['wkt'];
     $ll = explode(" ",str_replace(array("POINT(",")"),"",$wkt));
     $adres['geometry'] = array(
         "type" => "Point",

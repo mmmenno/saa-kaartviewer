@@ -12,7 +12,7 @@ PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX schema: <https://schema.org/>
 PREFIX roar: <https://w3id.org/roar#>
-SELECT ?adres ?huisnr ?huisletter (SAMPLE(?loclabel) AS ?label) (COUNT(DISTINCT(?loc)) AS ?nr) (MAX(?wkt) AS ?wkt) WHERE {
+SELECT ?adres ?huisnr ?huisletter (SAMPLE(?loclabel) AS ?label) (COUNT(DISTINCT(?loc)) AS ?nr) (MAX(?wkt) AS ?wkt) (MAX(?lp) as ?lp) WHERE {
   ?loc roar:documentedIn <https://www.joodsmonument.nl/> .
   ?loc schema:address ?adres .
   ?adres bag:huisnummer ?huisnr .
@@ -148,20 +148,23 @@ if(isset($data['results']['bindings'])){
 	  $adr = str_replace("https://adamlink.nl/geo/address/","",$value['adres']['value']);
 
 	  $wkt = $value['wkt']['value'];
-	  if(!isset($points[$wkt])){
-	    $points[$wkt] = array(
+
+	  $lp = str_replace("https://adamlink.nl/geo/lp/","",$value['lp']['value']);
+	  if(!isset($points[$lp])){
+	    $points[$lp] = array(
 	      "cnt" => $value['nr']['value'],
 	      "labels" => array($value['label']['value']),
-	      "adressen" => array($adr)
+	      "adressen" => array($adr),
+	      "wkt" => $wkt
 	    );
 	  }else{
-	    $points[$wkt]['cnt'] = $points[$wkt]['cnt'] + $value['nr']['value'];
+	    $points[$lp]['cnt'] = $points[$lp]['cnt'] + $value['nr']['value'];
 	    
-	    $points[$wkt]['labels'][] = $value['label']['value'];
-	    $points[$wkt]['labels'] = array_unique($points[$wkt]['labels']);
+	    $points[$lp]['labels'][] = $value['label']['value'];
+	    $points[$lp]['labels'] = array_unique($points[$lp]['labels']);
 
-	    $points[$wkt]['adressen'][] = $adr;
-	    $points[$wkt]['adressen'] = array_unique($points[$wkt]['adressen']);
+	    $points[$lp]['adressen'][] = $adr;
+	    $points[$lp]['adressen'] = array_unique($points[$lp]['adressen']);
 
 	  }
 	}

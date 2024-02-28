@@ -8,6 +8,7 @@ PREFIX lp: <https://adamlink.nl/geo/lp/>
 SELECT DISTINCT ?adres WHERE {
   VALUES ?lp { lp:' . implode(' lp:',$lps) . ' }
   ?adres schema:geoContains ?lp .
+  FILTER (!regex(?adres, "bag","i")) .
 }';
   
 //echo $sparql;

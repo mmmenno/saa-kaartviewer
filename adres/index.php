@@ -5,7 +5,7 @@ include("../_infra/functions.php");
 $adressen = json_decode($_GET['adressen'],true);
 $params = json_decode($_GET['params'],true);
 
-//print_r($adressen);
+
 //print_r($params);
 
 // sometimes (only in diamantwerkers, really), we need to translate locationpoints to addressid
@@ -22,6 +22,7 @@ if(count($lps) > 0){
   include("query-adresids-with-lps.php");
 }
 
+//print_r($adressen);
 
 $addressresults = array(); 
 
@@ -44,7 +45,7 @@ if(isset($params['diamantwerkers'])){
 
 
 
-
+//print_r($addressresults);
 
 
 

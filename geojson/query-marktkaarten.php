@@ -16,7 +16,7 @@ PREFIX saa: <https://data.archief.amsterdam/ontology#>
 PREFIX rico: <https://www.ica.org/standards/RiC/ontology#>
 PREFIX dcterms: <http://purl.org/dc/terms/>
 PREFIX pnv: <https://w3id.org/pnv#>
-SELECT ?aladr (MAX(?wktspatial) as ?wkt) (GROUP_CONCAT(DISTINCT ?adrstr;SEPARATOR=",") as ?labels) (count(DISTINCT ?po) as ?residents) WHERE {
+SELECT ?aladr (MAX(?lp) as ?lp) (MAX(?wktspatial) as ?wkt) (GROUP_CONCAT(DISTINCT ?adrstr;SEPARATOR=",") as ?labels) (count(DISTINCT ?po) as ?residents) WHERE {
   ?deed saa:isOrWasAlsoIncludedIn <https://ams-migrate.memorix.io/resources/records/7a89c50a-63cc-083a-e053-b784100a07cb> .
   ?deed saa:isAssociatedWithModernAddress ?adr .
   ?adr a saa:Address .
@@ -103,20 +103,23 @@ if(isset($data['results']['bindings'])){
 	  $adr = str_replace("https://adamlink.nl/geo/address/","",$value['aladr']['value']);
 
 	  $wkt = $value['wkt']['value'];
-	  if(!isset($points[$wkt])){
-	    $points[$wkt] = array(
+	  
+	  $lp = str_replace("https://adamlink.nl/geo/lp/","",$value['lp']['value']);
+	  if(!isset($points[$lp])){
+	    $points[$lp] = array(
 	      "cnt" => $value['residents']['value'],
 	      "labels" => explode(",",$value['labels']['value']),
-	      "adressen" => array($adr)
+	      "adressen" => array($adr),
+	      "wkt" => $wkt
 	    );
 	  }else{
-	    $points[$wkt]['cnt'] = $points[$wkt]['cnt'] + $value['residents']['value'];
+	    $points[$lp]['cnt'] = $points[$lp]['cnt'] + $value['residents']['value'];
 	    
-	    $points[$wkt]['labels'][] = $value['labels']['value'];
-	    $points[$wkt]['labels'] = array_unique($points[$wkt]['labels']);
+	    $points[$lp]['labels'][] = $value['labels']['value'];
+	    $points[$lp]['labels'] = array_unique($points[$lp]['labels']);
 
-	    $points[$wkt]['adressen'][] = $adr;
-	    $points[$wkt]['adressen'] = array_unique($points[$wkt]['adressen']);
+	    $points[$lp]['adressen'][] = $adr;
+	    $points[$lp]['adressen'] = array_unique($points[$lp]['adressen']);
 
 	  }
 	}

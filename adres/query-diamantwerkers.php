@@ -2,6 +2,8 @@
 
 
 $sparql = '
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX bif: <http://www.openlinksw.com/schemas/bif#>
 PREFIX schema: <https://schema.org/>
 PREFIX adbandb: <https://iisg.amsterdam/vocab/adb-andb/>
 PREFIX andb: <https://iisg.amsterdam/id/andb/>
@@ -30,7 +32,36 @@ SELECT DISTINCT ?resident ?residentlabel
   }
   ?resident adbandb:inhabits ?residency .
   ?resident rdfs:label ?residentlabel .
-  optional{
+  ';
+
+  if(strlen($params['voornaam'])){
+  	$sparql .= '?resident schema:givenName ?givenname . 
+				FILTER (bif:contains (?givenname, "\'' . $params['voornaam'] . '\'")) .
+				';
+  }
+
+  if(strlen($params['tussenvoegsel'])){
+  	$sparql .= '?resident schema:additionalName ?prefix . 
+				FILTER (bif:contains (?prefix, "\'' . $params['tussenvoegsel'] . '\'")) .
+				';
+  }
+
+  if(strlen($params['achternaam'])){
+  	$sparql .= '?resident schema:familyName ?famname .
+  			FILTER (bif:contains (?famname, "\'' . $params['achternaam'] . '\'")) . 
+				';
+  }
+
+  if(strlen($params['geboortedatum'])){
+  	$parts = explode("-",$params['geboortedatum']);
+  	$geboortedatum = $parts[2] . "-" . $parts[1] . "-" . $parts[0];
+  	$sparql .= '?resident schema:birthDate ?birth . 
+				FILTER (?birth = "' . $geboortedatum . '"^^xsd:date) .
+				';
+  }
+
+	
+	$sparql .= 'optional{
   	?resident schema:birthDate ?birth .
   }
   optional{
