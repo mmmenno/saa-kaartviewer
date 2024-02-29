@@ -45,6 +45,21 @@ SELECT ?aladr ?label (MAX(?lp) as ?lp) (MAX(?wkt) AS ?wkt) (COUNT(DISTINCT ?bbre
 							  ?agentcontext dct:title ?agentrectitle .
 							  FILTER (bif:contains (?agentrectitle, "\'' . $searchname . '\'")) .
 				';
+		if(strlen($_GET['geboortedatum'])){ // NOT GOING TO HAPPEN, BUT WE DON'T WANT TO FIND ALL
+	  	$parts = explode("-",$_GET['geboortedatum']);
+	  	$geboortedatum = $parts[2] . "-" . $parts[1] . "-" . $parts[0];
+	  	$sparql .= '?agentcontext schema:birthDate ?birth . 
+					FILTER (?birth = "' . $geboortedatum . '"^^xsd:date) .
+					';
+	  }
+
+  
+  }elseif(strlen($_GET['geboortedatum'])){ // NOT GOING TO HAPPEN, BUT WE DON'T WANT TO FIND ALL
+  	$parts = explode("-",$_GET['geboortedatum']);
+  	$geboortedatum = $parts[2] . "-" . $parts[1] . "-" . $parts[0];
+  	$sparql .= '?agentcontext schema:birthDate ?birth . 
+				FILTER (?birth = "' . $geboortedatum . '"^^xsd:date) .
+				';
   }
   
   $sparql .= ' ?bbrec schemahttp:thumbnailUrl ?thumb .

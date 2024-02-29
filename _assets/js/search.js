@@ -18,6 +18,7 @@ function getParams(){
 
     var fields = $('#searchform').serializeArray();
     $.each( fields, function( key, value ) {
+        console.log(value);
         parameters[value['name']] = value['value'];
     });
 
@@ -153,15 +154,17 @@ function whenClicked(){
         fillOpacity: 1
     });
 
+    $("#info-with-address").html('<em>informatie ophalen...</em>');
+
     var props = $(this)[0].feature.properties;
-    console.log(props);
+    
     urlparams = getParams();
     delete urlparams["bbox"];
-    console.log(urlparams);
+    console.log(encodeURIComponent(JSON.stringify(urlparams)));
 
     $('#searchinfo').hide();
 
-    $("#info-with-address").load('adres/index.php?adressen=' + JSON.stringify(props['adressen']) + '&params=' +  JSON.stringify(urlparams));
+    $("#info-with-address").load('adres/index.php?adressen=' + JSON.stringify(props['adressen']) + '&params=' +  encodeURIComponent(JSON.stringify(urlparams)));
 
 
 }

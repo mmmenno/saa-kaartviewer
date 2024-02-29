@@ -37,6 +37,9 @@ if(isset($_GET['beeldbank'])){
 if(isset($_GET['diamantwerkers'])){
     $bronnen++;
 }
+if(isset($_GET['register1874'])){
+    $bronnen++;
+}
 $limitperbron = floor($limit/$bronnen);
 $limitbereikt = false;
 
@@ -53,6 +56,10 @@ if(isset($_GET['beeldbank'])){
 
 if(isset($_GET['joodsmonument'])){
     include("query-jm.php");
+}
+
+if(isset($_GET['register1874'])){
+    include("query-register1874.php");
 }
 
 if(isset($_GET['diamantwerkers'])){

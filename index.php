@@ -57,19 +57,22 @@ if(!isset($_GET['bron'])){
 		
 
 		
-		<input type="checkbox" name="marktkaarten" id="marktkaarten" />
-		<label for="marktkaarten">in marktkaarten</label>
+		in <input type="checkbox" name="marktkaarten" id="marktkaarten" />
+		<label for="marktkaarten">marktkaarten</label>
 		
 		<input type="checkbox" name="joodsmonument" id="joodsmonument" />
-		<label for="joodsmonument">in joods monument</label>
+		<label for="joodsmonument">joods monument</label>
+		
+		<input type="checkbox" name="beeldbank" id="beeldbank" />
+		<label for="beeldbank">beeldbank</label>
 		
 		<br />
 
 		<input type="checkbox" name="diamantwerkers" id="diamantwerkers" />
-		<label for="diamantwerkers">in diamantwerkers</label>
+		<label for="diamantwerkers">diamantwerkers</label>
 		
-		<input type="checkbox" name="beeldbank" id="beeldbank" />
-		<label for="beeldbank">in beeldbank</label>
+		<input type="checkbox" name="register1874" id="register1874" />
+		<label for="register1874">bevolkingsregister 1874-93</label>
 		
 		<br style="clear:both" />
 
