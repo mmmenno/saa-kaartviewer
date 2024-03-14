@@ -73,6 +73,13 @@ if(!isset($_GET['bron'])){
 		
 		<input type="checkbox" name="register1874" id="register1874" />
 		<label for="register1874">bevolkingsregister 1874-93</label>
+
+		<br />
+
+		<input type="checkbox" name="verpondingskohier1802" id="verpondingskohier1802" />
+		<label for="verpondingskohier1802">verpondingskohier 1802</label>
+		
+		
 		
 		<br style="clear:both" />
 

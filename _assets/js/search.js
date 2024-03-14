@@ -35,9 +35,15 @@ function getParams(){
   
 function refreshMap(){
 
+    // tell them we're trying
+    $("#info-with-address").html('');
+    $("#searchinfo").html('<em>adressen binnen dit gebied zoeken...</em>');
+    $('#searchinfo').show();
+    $('#searchresults').show();
+
     //var urlparams = $.param(getParams());
     var urlparams = getParams();
-    //console.log(urlparams);
+    console.log(urlparams);
 
     $.ajax({
         type: 'GET',
@@ -114,7 +120,7 @@ function getColor(props) {
 }
 
 function showBron() {
-    $('#main').load('bronnen/marktkaarten/over.php');
+    //$('#main').load('bronnen/marktkaarten/over.php');
 }
 
 function getSize(d) {
@@ -154,7 +160,7 @@ function whenClicked(){
         fillOpacity: 1
     });
 
-    $("#info-with-address").html('<em>informatie ophalen...</em>');
+    $("#info-with-address").html('<em>gegevens bij adres ophalen...</em>');
 
     var props = $(this)[0].feature.properties;
     

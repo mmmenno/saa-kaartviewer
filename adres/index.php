@@ -47,6 +47,10 @@ if(isset($params['diamantwerkers'])){
     include("query-diamantwerkers.php");
 }
 
+if(isset($params['verpondingskohier1802'])){
+    include("query-verpondingskohier1802.php");
+}
+
 
 
 //print_r($addressresults);

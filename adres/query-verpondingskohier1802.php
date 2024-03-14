@@ -2,6 +2,7 @@
 
 
 $sparql = '
+PREFIX adamlink: <https://lod.uba.uva.nl/ATM/Adamlink/graphs/>
 PREFIX saadata: <https://id.amsterdamtimemachine.nl/ark:/81741/dataset/saa/> 
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 PREFIX bif: <http://www.openlinksw.com/schemas/bif#>
@@ -11,27 +12,28 @@ PREFIX owl: <http://www.w3.org/2002/07/owl#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX saa: <https://data.archief.amsterdam/ontology#>
-PREFIX rico: <https://www.ica.org/standards/RiC/ontology#>
 PREFIX dcterms: <http://purl.org/dc/terms/>
 PREFIX pnv: <https://w3id.org/pnv#>
 PREFIX al: <https://adamlink.nl/geo/address/>
-PREFIX pnv: <https://w3id.org/pnv#>
+PREFIX roar: <https://w3id.org/roar#>
+PREFIX bag: <http://bag.basisregistraties.overheid.nl/def/bag#>
 
-SELECT ?aladr ?birth ?litname ?streetname ?huisnr ?deed ?po 
-  FROM saadata:bevolkingsregister-1874-1893 
+SELECT ?aladr ?birth ?litname ?adrstr ?lo ?po ?scan
+  FROM saadata:verpondingskohier-1802-1805 
+  FROM adamlink:addresses 
+	FROM adamlink:districts 
   WHERE {
   VALUES ?aladr { al:' . implode(' al:',$adressen) . ' }
-  ?deed saa:isAssociatedWithModernAddress ?saaadr .
-  ?saaadr saa:streetTextualValue ?streetname .
-  ?saaadr saa:houseNumber ?huisnr .
-  ?saaadr owl:sameAs ?aladr .
-  ?deed rico:hasOrHadSubject ?po . 
+  ?po roar:hasLocation ?lo .
+  ?lo owl:sameAs ?aladr .
+  ?lo rdfs:label ?adrstr .
+  ?lo roar:onScan ?scan .
   optional{
     ?po schema:birthDate ?birth . 
   }
   ?po pnv:hasName ?pnvname .
   ?pnvname pnv:literalName ?litname . 
-  ';
+	';
 
   if(strlen($params['voornaam'])){
   	$sparql .= '?pnvname pnv:givenName ?givenname . 
@@ -51,12 +53,12 @@ SELECT ?aladr ?birth ?litname ?streetname ?huisnr ?deed ?po
 				';
   }
 
-  if(strlen($params['geboortedatum'])){
-  	$parts = explode("-",$params['geboortedatum']);
-  	$geboortedatum = $parts[2] . "-" . $parts[1] . "-" . $parts[0];
-  	$sparql .= 'FILTER (?birth = "' . $geboortedatum . '"^^xsd:date) .
+  if(strlen($params['huisnr'])){
+  	$sparql .= '?aladr bag:huisnummer "' . $params['huisnr'] . '"^^xsd:integer .
 				';
   }
+
+  
 				 
 $sparql .= '}';
   
@@ -76,15 +78,15 @@ if(isset($data['results']['bindings'])){
 
 		$registratie = array();
 
-		$registratie['label'] = "Register 1874-93: " . $rec['litname']['value'];
+		$registratie['label'] = "Verpondingskohier 1802: " . $rec['litname']['value'];
 
-		if(isset($rec['birth']) && isset($rec['streetname'])){
-			$registratie['persondescription'] = "Geboren op " . dutchdate($rec['birth']['value']) . ", wonende " . $rec['streetname']['value'] . " " . $rec['huisnr']['value'];
-		}elseif(isset($rec['streetname'])){
-			$registratie['persondescription'] = "Wonende " . $rec['streetname']['value'] . " " . $rec['huisnr']['value'];
+		if(isset($rec['birth']) && isset($rec['adrstr'])){
+			$registratie['persondescription'] = "Geboren op " . dutchdate($rec['birth']['value']) . ", " . $rec['adrstr']['value'];
+		}elseif(isset($rec['adrstr'])){
+			$registratie['persondescription'] = "" . $rec['adrstr']['value'];
 		}
 
-		$registratie['link'] = str_replace("https://ams-migrate.memorix.io/resources/records/temp-","https://archief.amsterdam/indexen/deeds/",$rec['deed']['value']);
+		$registratie['link'] = $rec['scan']['value'];
 		$registratie['link'] .= "?person=" . str_replace("https://ams-migrate.memorix.io/resources/records/","",$rec['po']['value']);
 		// https://archief.amsterdam/indexen/deeds/e7cf77d5-1fdc-41d9-b2e8-08c2eb1de351?person=962316bc-2057-1f3a-e053-b784100aab65
 		$registratie['adresuri'] = $rec['aladr']['value'];

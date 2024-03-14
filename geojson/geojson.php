@@ -25,6 +25,7 @@ $points = array();
 */
 $limit = 5000;
 $bronnen = 0;
+
 if(isset($_GET['marktkaarten'])){
     $bronnen++;
 }
@@ -40,10 +41,15 @@ if(isset($_GET['diamantwerkers'])){
 if(isset($_GET['register1874'])){
     $bronnen++;
 }
-$limitperbron = floor($limit/$bronnen);
+if(isset($_GET['verpondingskohier1802'])){
+    $bronnen++;
+}
+
+if($bronnen > 0){
+    $limitperbron = floor($limit/$bronnen);
+}
+
 $limitbereikt = false;
-
-
 
 
 if(isset($_GET['marktkaarten'])){
@@ -65,6 +71,8 @@ if(isset($_GET['register1874'])){
 if(isset($_GET['diamantwerkers'])){
     include("query-diamantwerkers.php");
 }
+if(isset($_GET['verpondingskohier1802'])){
+    include("query-verpondingskohier1802.php");}
 
 
 
