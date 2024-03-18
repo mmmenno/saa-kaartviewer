@@ -51,6 +51,10 @@ if(isset($params['verpondingskohier1802'])){
     include("query-verpondingskohier1802.php");
 }
 
+if(isset($params['woningkaarten'])){
+    include("query-woningkaarten.php");
+}
+
 
 
 //print_r($addressresults);

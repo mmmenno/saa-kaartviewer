@@ -44,6 +44,9 @@ if(isset($_GET['register1874'])){
 if(isset($_GET['verpondingskohier1802'])){
     $bronnen++;
 }
+if(isset($_GET['woningkaarten'])){
+    $bronnen++;
+}
 
 if($bronnen > 0){
     $limitperbron = floor($limit/$bronnen);
@@ -72,7 +75,11 @@ if(isset($_GET['diamantwerkers'])){
     include("query-diamantwerkers.php");
 }
 if(isset($_GET['verpondingskohier1802'])){
-    include("query-verpondingskohier1802.php");}
+    include("query-verpondingskohier1802.php");
+}
+if(isset($_GET['woningkaarten'])){
+    include("query-woningkaarten.php");
+}
 
 
 

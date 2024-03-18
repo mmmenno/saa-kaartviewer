@@ -70,14 +70,18 @@ if(!isset($_GET['bron'])){
 
 		<input type="checkbox" name="diamantwerkers" id="diamantwerkers" />
 		<label for="diamantwerkers">diamantwerkers</label>
+
+		<input type="checkbox" name="woningkaarten" id="woningkaarten" />
+		<label for="woningkaarten">woningkaarten</label>
+		
+		<br />
 		
 		<input type="checkbox" name="register1874" id="register1874" />
 		<label for="register1874">bevolkingsregister 1874-93</label>
 
-		<br />
-
 		<input type="checkbox" name="verpondingskohier1802" id="verpondingskohier1802" />
 		<label for="verpondingskohier1802">verpondingskohier 1802</label>
+		
 		
 		
 		
