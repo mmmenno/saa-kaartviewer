@@ -104,6 +104,7 @@ function refreshMap(){
             if(geojsonprops['limited']){
                 infotext += ', <strong class="warning">zoom in voor meer</strong>';
             }
+            infotext += ', klik op een adres om de zoekresultaten daarbij te bekijken.';
             $('#info-with-address').html('');
             $('#searchinfo').html(infotext);
             $('#searchresults').show();

@@ -2,7 +2,7 @@
 <html>
 <head>
 	
-	<title>Kaartviewer</title>
+	<title>Aan het juiste adres</title>
 
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -28,7 +28,7 @@
 <div class="container-fluid" id="topbar">
 	<div class="row">
 		<div class="col-md-6">
-			<a href="/">Kaartviewer</a> / een Stadsarchief Amsterdam prototype
+			<a href="/">Aan het juiste adres</a> / een Stadsarchief Amsterdam prototype
 		</div>
 		<div class="col-md-6" id="navbar">
 			<a href="/over.php">over deze applicatie</a>

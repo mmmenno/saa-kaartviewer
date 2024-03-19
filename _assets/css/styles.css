@@ -27,9 +27,9 @@ body{
 	padding: 4px 24px;
 }
 #main{
-	margin-top: 0;
+	margin-top: 50px;
 	background-color: #fff;
-	padding-top: 8px;
+	padding-top: 0;
 	padding-bottom: 100px;
 }
 #searchbox{
@@ -108,6 +108,12 @@ a{
 	color: #ac2336;
 	text-decoration: none;
 }
+ul{
+	padding-left: 16px;
+}
+li{
+	margin-bottom: 16px;
+}
 a:hover{
 	text-decoration: underline;
 	color: #ac2336;
@@ -176,7 +182,7 @@ a:hover{
 }
 img{
 	width: 100%;
-	margin-bottom: 16px;
+	margin-bottom: 0px;
 	margin-top: 8px;
 }
 .input-group{

@@ -3,15 +3,15 @@
 
 function getSparqlResults($endpoint,$query){
 
-
 	// params
 	$url = $endpoint . '?query=' . urlencode($query) . "&format=json";
+	$cache = false;
 	$urlhash = hash("md5",$url);
 	$datafile = __DIR__ . "/sparqldata/" . $urlhash . ".json";
 	$maxcachetime = 60*60*24*7;
 
 	// get cached data if recent
-	if(file_exists($datafile)){
+	if($cache && file_exists($datafile)){
 		$mtime = filemtime($datafile);
 		$timediff = time() - $mtime;
 		if($timediff < $maxcachetime){
@@ -38,7 +38,7 @@ function getSparqlResults($endpoint,$query){
 
 	// if valid results were returned, save file
 	$data = json_decode($response,true);
-	if(isset($data['results'])){
+	if($cache && isset($data['results'])){
 		file_put_contents($datafile, $response);
 	}
 
