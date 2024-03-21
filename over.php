@@ -104,17 +104,32 @@ include("_parts/header.php");
 					Een druk op de knop 'Zoek binnen kaartvenster' toont resultaten van <strong>aangevinkte</strong> bronnen die binnen het kaartvenster vallen. Er kunnen maximaal een paar duizend resultaten op de kaart getoond worden - als er meer resultaten zijn verschijnt de melding 'zoom in voor meer'.
 				</p>
 
+				<img src="_assets/img/bazel.jpg" />
+
+				<p class="small">
+					<em>Ingezoomd op de Vijzelstraat. Elk rood stipje staat voor één of meer (historische) adressen waar aangevinkte bronnen mee verbonden zijn. Hier zijn ook alle voor de bouw van De Bazel afgebroken adressen over de kaart van 1985 te zien.</em>
+				</p>
+
+				<p>
+					Er is keuze in historische kaartlagen uit circa 1876, 1909, 1943 en 1985. Deze zijn onderin het scherm te selecteren. Een moderne kaartlaag wordt getoond wanneer je de spatiebalk indrukt.
+				</p>
+
+				<img src="_assets/img/vijzelstraat.jpg" />
+
+				<p class="small">
+					<em>De kaart van Loman van rond 1876 is voor de meeste adressen in dit stukje Vijzelstraat een logischer keus. Het pand op de hoek met de Herengracht is aangeklikt.</em>
+				</p>
+
+				<p>
+					Als je met de muis over een rood stipje gaat zie je hoeveel bronnen er met adressen op die locatie verbonden zijn. Klik je erop, dan verschijnen de resultaten aan de rechterzijde. Hier zie je kort de informatie uit de bron met een link naar de scan of de bron bij de betreffende instelling én een link naar het adres in Adamlink. Bij de instelling is meer informatie te vinden over de (context van) de bron en op Adamlink vind je informatie over de plek, de historie en eventuele naamswijzigingen of spellingsvarianten.
+				</p>
+
 				<p>
 					Naast inzoomen kun je de resultaten ook verfijnen met behulp van één of meer zoekvelden.
 				</p>
-
 				
 				<p>
 					Je kunt zoeken op een adres, opgedeeld in <strong>straat</strong> en <strong>huisnummer</strong>. Bij zoeken op een straatnaam wordt alleen letterlijk en op hele woorden (en geen delen van) gezocht. Wel kan op in het <a href="https://adamlink.nl/geo/streets/list">Adamlink stratenregister</a> opgenomen alternatieve namen ('Stalinlaan') en schrijfwijzen ('Calver Straet') gezocht worden. Huisnummertoevoegingen worden niet meegenomen in deze applicatie.
-				</p>
-
-				<p>
-					Het resultaat wordt getoond via rode stipjes op de kaart. Als je met de muis over zo’n stipje gaat zie je hoeveel bronnen er zijn die aan je zoekopdracht voldoen. Klik je op een rood stipje, dan verschijnen de resultaten aan de rechterzijde. Hier zie je kort de informatie uit de bron met een link naar de scan of de bron bij de betreffende instelling én een link naar het adres in Adamlink. Bij de instelling is meer informatie te vinden over de (context van) de bron en op Adamlink vind je informatie over de plek, de historie en eventuele naamswijzigingen of spellingsvarianten.
 				</p>
 
 				<p>
@@ -132,7 +147,7 @@ include("_parts/header.php");
 				</p>
 
 				<p>
-					Bijzonder is dat bij het beeldmateriaal de naam van de <strong>vervaardiger</strong> (bijvoorbeeld fotograaf of kunstenaar) is opgenomen in het naamveld. Door te zoeken op zo’n kunstenaarsnaam en te filteren op beeldbank, kun je bijvoorbeeld direct zien van welke plekken hij een werk gemaakt heeft.
+					Bijzonder is dat bij het beeldmateriaal de naam van de <strong>vervaardiger</strong> (bijvoorbeeld fotograaf of kunstenaar) is opgenomen in het naamveld. Door te zoeken op zo’n kunstenaarsnaam en te filteren op beeldbank, kun je bijvoorbeeld direct zien van welke plekken die vervaardiger werken gemaakt heeft.
 				</p>
 
 				<img src="_assets/img/eilers.jpg" />
@@ -153,9 +168,7 @@ include("_parts/header.php");
 
 				
 
-				<p>
-					Er is keuze in historische kaartlagen uit circa 1876, 1909, 1943 en 1985. Deze zijn onderin het scherm te selecteren. Een moderne kaartlaag wordt getoond wanneer je de spatiebalk indrukt.
-				</p>
+				
 
 				
 			</div>
