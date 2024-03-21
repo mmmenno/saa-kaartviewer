@@ -26,7 +26,7 @@ include("_parts/header.php");
 				</p>
 
 				<p>
-					Het project kwam tot stand met financiële steun van het Mondriaan Fonds en inhoudelijke ondersteuning van de <a href="https://www.amsterdamtimemachine.nl/">Amsterdam Time Machine</a> (onderzoeksproject van de Humanities Labs van de UvA). Een gedeelte van de gekoppelde bronnen is gerealiseerd via een NDE-project van het Joods Cultureel Kwartier. De gebruikte historische locatiepunten zijn gemaakt door Mark Raat en Bram Boonstra. Deze site is gemaakt door Menno den Engelse (Islands of Meaning) met medewerking van Leon van Wissen (UvA) en verschillende medewerkers van het Stadsarchief Amsterdam.
+					Het project kwam tot stand met financiële steun van het <a href="https://www.mondriaanfonds.nl/">Mondriaan Fonds</a> en inhoudelijke ondersteuning van de <a href="https://www.amsterdamtimemachine.nl/">Amsterdam Time Machine</a> (onderzoeksproject van de Humanities Labs van de UvA). Een gedeelte van de gekoppelde bronnen is gerealiseerd via een <a href="https://netwerkdigitaalerfgoed.nl/">NDE</a>-project van het <a href="https://jck.nl/">Joods Cultureel Kwartier</a>. De gebruikte historische locatiepunten zijn gemaakt door Mark Raat en Bram Boonstra en door hen verbonden met de verpondingskohiers. De overige bronnen zijn verbonden en de viewer is gemaakt door Menno den Engelse (<a href="https://islandsofmeaning.nl/">Islands of Meaning</a>), met medewerking van Leon van Wissen (<a href="https://www.uva.nl/profiel/w/i/l.vanwissen/l.van-wissen.html">UvA</a>) en verschillende medewerkers van het <a href="https://archief.amsterdam/">Stadsarchief Amsterdam</a>.
 				</p>
 
 
