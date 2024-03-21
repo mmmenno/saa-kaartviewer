@@ -26,7 +26,7 @@ include("_parts/header.php");
 				</p>
 
 				<p>
-					Het project kwam tot stand met financiële steun van het Mondriaan Fonds en technische ondersteuning van de Universiteitsbibliotheek Amsterdam. Een gedeelte van de gekoppelde bronnen is gerealiseerd via een NDE-project van het Joods Cultureel Kwartier. Deze site is gemaakt door Menno den Engelse (Islands of Meaning) met medewerking van Leon van Wissen (UvA) en verschillende medewerkers van het Stadsarchief Amsterdam.
+					Het project kwam tot stand met financiële steun van het Mondriaan Fonds en inhoudelijke ondersteuning van de <a href="https://www.amsterdamtimemachine.nl/">Amsterdam Time Machine</a> (onderzoeksproject van de Humanities Labs van de UvA). Een gedeelte van de gekoppelde bronnen is gerealiseerd via een NDE-project van het Joods Cultureel Kwartier. De gebruikte historische locatiepunten zijn gemaakt door Mark Raat en Bram Boonstra. Deze site is gemaakt door Menno den Engelse (Islands of Meaning) met medewerking van Leon van Wissen (UvA) en verschillende medewerkers van het Stadsarchief Amsterdam.
 				</p>
 
 
@@ -38,7 +38,7 @@ include("_parts/header.php");
 				</p>
 
 				<p>
-					Het Stadsarchief migreert haar data momenteel naar nieuwe systemen. Voor dit project konden we dankbaar gebruik maken van de <a href="https://lod.uba.uva.nl/ATM/ATM-KG">Amsterdam Time Machine Knowledge Graph</a>, gehost door de Universiteitsbibliotheek Amsterdam.
+					Het Stadsarchief migreert haar data momenteel naar nieuwe systemen. Zodra dat mogelijk is zullen ook de resultaten van Aan het juiste adres worden opgenomen in deze systemen. Voor de realisatie van dit prototype konden we dankbaar gebruik maken van de <a href="https://lod.uba.uva.nl/ATM/ATM-KG">Amsterdam Time Machine Knowledge Graph</a>, gehost door de Universiteitsbibliotheek Amsterdam.
 				</p>
 
 				<p>
@@ -70,8 +70,8 @@ include("_parts/header.php");
 					<li><strong>Beeldmateriaal</strong>: zo’n 300.000 afbeeldingen die een locatie in de beschrijving hadden en niet auteursrechtelijk beschermd zijn, zijn opgenomen in deze applicatie.<br />
 					<a href="https://archief.amsterdam/uitleg/beeldbank/13-zoeken-in-de-beeldbank">Zoeken in de Beeldbank - Stadsarchief Amsterdam</a></li>
 
-					<li><strong>Bevolkingsregisters 1864-1874</strong>: registratie van alle adressen en wie daar woonden in de periode 1864-1874. Het gaat om ruim 1 miljoen persoonsvermeldingen.<br />
-					<a href="https://archief.amsterdam/uitleg/indexen/39-bevolkingsregister-1864-1874">Bevolkingsregister 1864-1874 - Stadsarchief Amsterdam</a></li>
+					<!--<li><strong>Bevolkingsregisters 1864-1874</strong>: registratie van alle adressen en wie daar woonden in de periode 1864-1874. Het gaat om ruim 1 miljoen persoonsvermeldingen.<br />
+					<a href="https://archief.amsterdam/uitleg/indexen/39-bevolkingsregister-1864-1874">Bevolkingsregister 1864-1874 - Stadsarchief Amsterdam</a></li>-->
 
 					<li><strong>Bevolkingsregisters 1874-1893</strong>: registratie van alle adressen en wie daar woonden in de periode 1874-1893. Het gaat om zo’n 2,7 miljoen persoonsvermeldingen.<br />
 					<a href="https://archief.amsterdam/uitleg/indexen/37-bevolkingsregister-1874-1893">Bevolkingsregister 1874-1893 - Stadsarchief Amsterdam</a></li>
@@ -79,7 +79,7 @@ include("_parts/header.php");
 					<li><strong>Woningkaarten</strong>: ruim 770.000 kaarten met gegevens over de bewoners van een woning uit de periode 1924-1989, geordend op adres.<br />
 					<a href="https://archief.amsterdam/uitleg/indexen/25-woningkaarten-1924-1989">Woningkaarten 1924-1989 - Stadsarchief Amsterdam</a></li>
 
-					<li><strong>Verpondingskohieren 1802</strong> Verponding: registratie van alle panden binnen een wijk met een zogenoemd verpondingsnummer, dat werd gebruikt om belasting te innen.</li>
+					<li><strong>Verpondingskohieren 1802</strong>: registratie van alle panden binnen een wijk met een zogenoemd verpondingsnummer, dat werd gebruikt om belasting te innen.</li>
 
 					<li><strong>Joods monument</strong>: online monument voor de meer dan 104.000 mensen die in Nederland als Joden werden vervolgd en de Holocaust niet overleefden. Op deze site worden daarvan de 63.164 personen met Amsterdamse adressen getoond.<br />
 					<a href="https://www.joodsmonument.nl/nl/page/571160/over-het-joods-monument">Over het Joods Monument</a></li>
