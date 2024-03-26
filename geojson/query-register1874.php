@@ -36,8 +36,8 @@ SELECT ?aladr (MAX(?lp) as ?lp) (MAX(?wktspatial) as ?wkt)
 
 	  if(strlen($_GET['straat'])){
 	  	$sparql .= '?aladr hg:liesIn ?alstreet .
-	  			?alstreet skos:altLabel ?streetname . 
-					FILTER (bif:contains (?streetname, "\'' . $_GET['straat'] . '\'")) .
+	  			?alstreet skos:altLabel ?alstreetname . 
+					FILTER (bif:contains (?alstreetname, "\'' . $_GET['straat'] . '\'")) .
 					';
 	  }
 
