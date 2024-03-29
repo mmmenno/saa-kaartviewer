@@ -21,7 +21,7 @@
 	<link rel="stylesheet" href="/_assets/css/styles.css" />
 
 	
-
+	<script defer data-domain="aanhetjuisteadres.nl" src="https://plausible.io/js/script.js"></script>
 	
 </head>
 
