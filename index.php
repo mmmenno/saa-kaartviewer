@@ -74,6 +74,9 @@ if(!isset($_GET['bron'])){
 		<input type="checkbox" name="woningkaarten" id="woningkaarten" />
 		<label for="woningkaarten">woningkaarten</label>
 		
+		<input type="checkbox" name="errformulieren" id="errformulieren" />
+		<label for="errformulieren">ERR-formulieren</label>
+		
 		<br />
 		
 		<input type="checkbox" name="register1874" id="register1874" />

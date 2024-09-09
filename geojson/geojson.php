@@ -38,6 +38,9 @@ if(isset($_GET['beeldbank'])){
 if(isset($_GET['diamantwerkers'])){
     $bronnen++;
 }
+if(isset($_GET['errformulieren'])){
+    $bronnen++;
+}
 if(isset($_GET['register1874'])){
     $bronnen++;
 }
@@ -61,6 +64,10 @@ if(isset($_GET['marktkaarten'])){
 
 if(isset($_GET['beeldbank'])){
     include("query-beeldbank.php");
+}
+
+if(isset($_GET['errformulieren'])){
+    include("query-err.php");
 }
 
 if(isset($_GET['joodsmonument'])){

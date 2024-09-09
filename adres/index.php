@@ -38,6 +38,10 @@ if(isset($params['joodsmonument'])){
     include("query-jm.php");
 }
 
+if(isset($params['errformulieren'])){
+    include("query-err.php");
+}
+
 if(isset($params['register1874'])){
     include("query-register1874.php");
 }

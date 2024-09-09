@@ -8,6 +8,13 @@ $(document).ready(function() {
             if(!$("input").is(":focus")){
                 e.preventDefault();
                 tileLayer.setOpacity(0);
+                prevattr = $(".leaflet-control-attribution").html();
+                if(map.getZoom() > 16){
+                    $(".leaflet-control-attribution").html(baseLayer.options.attribution);
+                }else{
+                    $(".leaflet-control-attribution").html(overviewLayer.options.attribution);
+                }
+                
             }
             
             
@@ -15,29 +22,35 @@ $(document).ready(function() {
     };
     document.body.onkeyup = function(e){
         if(e.keyCode == 32){
-            tileLayer.setOpacity(1)
+            tileLayer.setOpacity(1);
+            $(".leaflet-control-attribution").html(tileLayer.options.attribution);
         }
     };
 
     $("#layerlinks a").on( "click", function(e) {
         e.preventDefault();
         layerid = $(this).attr("id");
-        //console.log(layerid);
+
 
         removeLayers();
 
         if(layerid == "layer1876"){
             tileLayer = layer1876.addTo(map);
+            $(".leaflet-control-attribution").html(layer1876.options.attribution);
         }
         if(layerid == "layer1909"){
             tileLayer = layer1909.addTo(map);
+            $(".leaflet-control-attribution").html(layer1909.options.attribution);
         }
         if(layerid == "layer1943"){
             tileLayer = layer1943.addTo(map);
+            $(".leaflet-control-attribution").html(layer1943.options.attribution);
         }
         if(layerid == "layer1985"){
             tileLayer = layer1985.addTo(map);
+            $(".leaflet-control-attribution").html(layer1985.options.attribution);
         }
+        
         
     });
     
@@ -92,30 +105,36 @@ function createMap(){
     }).addTo(map);
 
     layer1876 = L.tileLayer('https://images.huygens.knaw.nl/webmapper/maps/loman/{z}/{x}/{y}.jpeg', {
-        attribution: 'map provided by HicSuntLeones',
+        attribution: 'map provided by Jan Hartmann / HicSuntLeones',
         maxZoom: 19,
         minZoom:13
     });
 
-    layer1909 = L.tileLayer('https://tiles.create.humanities.uva.nl/atm/publieke-werken-1909/{z}/{x}/{y}.png', {
-        attribution: 'map provided by Bert Spaan',
+    // https://tiles.create.humanities.uva.nl/atm/publieke-werken-1909/{z}/{x}/{y}.png
+    layer1909 = L.tileLayer('https://images.huygens.knaw.nl/webmapper/maps/pw-1909/{z}/{x}/{y}.png', {
+        attribution: 'map provided by Jan Hartmann / HicSuntLeones',
         maxZoom: 19,
         minZoom:13
     });
 
-    layer1943 = L.tileLayer('https://tiles.create.humanities.uva.nl/atm/publieke-werken-1943/{z}/{x}/{y}.png', {
-        attribution: 'map provided by Bert Spaan',
+    // https://tiles.create.humanities.uva.nl/atm/publieke-werken-1943/{z}/{x}/{y}.png
+    layer1943 = L.tileLayer('https://images.huygens.knaw.nl/webmapper/maps/pw-1943/{z}/{x}/{y}.png', {
+        attribution: 'map provided by Jan Hartmann / HicSuntLeones',
         maxZoom: 19,
         minZoom:13
     });
 
-    layer1985 = L.tileLayer('https://tiles.create.humanities.uva.nl/atm/publieke-werken-1985/{z}/{x}/{y}.png', {
-        attribution: 'map provided by Bert Spaan',
+    // https://tiles.create.humanities.uva.nl/atm/publieke-werken-1985/{z}/{x}/{y}.png
+    layer1985 = L.tileLayer('https://images.huygens.knaw.nl/webmapper/maps/pw-1985/{z}/{x}/{y}.png', {
+        attribution: 'map provided by Jan Hartmann / HicSuntLeones',
         maxZoom: 19,
         minZoom:13
     });
 
     tileLayer = layer1943.addTo(map);
+
+    $(".leaflet-control-attribution").html(layer1943.options.attribution);
+    
 
 }
 
