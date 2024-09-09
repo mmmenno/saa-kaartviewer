@@ -86,7 +86,7 @@ include("_parts/header.php");
 
 					<li><strong>ERR-formulieren</strong>: De Einsatzstab Reichsleiter Rosenberg roofde joodse bezittingen en legde dat vast op papier. Op de formulieren zijn inboedels en namen van bewoners te vinden. Die laatste zijn alleen doorzoekbaar gemaakt als ze gekoppeld konden worden met het Joods Monument, maar zijn op de scans natuurlijk wel te lezen.<br />
 					Meer over het NIOD-project 
-					<a href="https://www.niod.nl/projecten/de-papieren-getuigen-van-roof-en-ontrechting">hier</a>, de scans <a href="https://www.archieven.nl/mi/298/?mivast=298&mizig=210&miadt=298&micode=093a&miview=inv2">vind je in deze inventaris van het NIOD archief</a>.</li>
+					<a href="https://www.niod.nl/projecten/de-papieren-getuigen-van-roof-en-ontrechting">hier</a>, de scans <a href="https://www.archieven.nl/mi/298/?mivast=298&mizig=210&miadt=298&miaet=1&micode=093a&minr=1024707&miview=inv2">vind je in deze inventaris van het NIOD archief</a>.</li>
 
 					<li><strong>Diamantwerkers</strong>: de Algemene Nederlandse Diamantbewerkersbond (ANDB), opgericht in 1894, is de eerste moderne vakbond van Nederland. De ledenkaarten van de bond zijn gedigitaliseerd, getranscribeerd en toegankelijk gemaakt.<br />
 					<a href="https://hdl.handle.net/10622/ARCH00210">Collection Summary: Archief ANDB (iisg.amsterdam)</a></li>
