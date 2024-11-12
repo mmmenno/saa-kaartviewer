@@ -91,6 +91,9 @@ include("_parts/header.php");
 					<li><strong>Diamantwerkers</strong>: de Algemene Nederlandse Diamantbewerkersbond (ANDB), opgericht in 1894, is de eerste moderne vakbond van Nederland. De ledenkaarten van de bond zijn gedigitaliseerd, getranscribeerd en toegankelijk gemaakt.<br />
 					<a href="https://hdl.handle.net/10622/ARCH00210">Collection Summary: Archief ANDB (iisg.amsterdam)</a></li>
 
+					<li><strong>De Blauwe Knoop</strong>, zo werd de <a href="https://nl.wikipedia.org/wiki/Nederlandse_Vereniging_tot_Afschaffing_van_Alcoholhoudende_Dranken">Nederlandse Vereniging tot Afschaffing van Alcoholhoudende Dranken</a> officieus aangeduid, vanwege het blauwe insigne dat leden vaak droegen. In 2024 zijn de Amsterdamse ledenkaarten gescand en in een crowdsourceproject getranscribeerd. De resultaten daarvan zijn wel in deze kaartviewer, maar nog niet als index op de website van het Stadsarchief te doorzoeken.<br />
+					<a href="https://archief.amsterdam/inventarissen/details/210">210 Archief van de Nederlandse Vereniging tot Afschaffing van Alcoholhoudende Dranken; Afdeling Amsterdam en Amsterdamsch Matigheids Genootschap</a></li>
+
 
 
 				</ul>

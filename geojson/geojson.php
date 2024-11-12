@@ -50,6 +50,9 @@ if(isset($_GET['verpondingskohier1802'])){
 if(isset($_GET['woningkaarten'])){
     $bronnen++;
 }
+if(isset($_GET['blauweknoop'])){
+    $bronnen++;
+}
 
 if($bronnen > 0){
     $limitperbron = floor($limit/$bronnen);
@@ -86,6 +89,9 @@ if(isset($_GET['verpondingskohier1802'])){
 }
 if(isset($_GET['woningkaarten'])){
     include("query-woningkaarten.php");
+}
+if(isset($_GET['blauweknoop'])){
+    include("query-blauweknoop.php");
 }
 
 

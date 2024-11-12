@@ -111,21 +111,24 @@ function createMap(){
     });
 
     // https://tiles.create.humanities.uva.nl/atm/publieke-werken-1909/{z}/{x}/{y}.png
-    layer1909 = L.tileLayer('https://images.huygens.knaw.nl/webmapper/maps/pw-1909/{z}/{x}/{y}.png', {
+    // https://images.huygens.knaw.nl/webmapper/maps/pw-1909/{z}/{x}/{y}.png
+    layer1909 = L.tileLayer('https://tiles.create.humanities.uva.nl/atm/publieke-werken-1909/{z}/{x}/{y}.png', {
         attribution: 'map provided by Jan Hartmann / HicSuntLeones',
         maxZoom: 19,
         minZoom:13
     });
 
     // https://tiles.create.humanities.uva.nl/atm/publieke-werken-1943/{z}/{x}/{y}.png
-    layer1943 = L.tileLayer('https://images.huygens.knaw.nl/webmapper/maps/pw-1943/{z}/{x}/{y}.png', {
+    // https://images.huygens.knaw.nl/webmapper/maps/pw-1943/{z}/{x}/{y}.png
+    layer1943 = L.tileLayer('https://tiles.create.humanities.uva.nl/atm/publieke-werken-1943/{z}/{x}/{y}.png', {
         attribution: 'map provided by Jan Hartmann / HicSuntLeones',
         maxZoom: 19,
         minZoom:13
     });
 
     // https://tiles.create.humanities.uva.nl/atm/publieke-werken-1985/{z}/{x}/{y}.png
-    layer1985 = L.tileLayer('https://images.huygens.knaw.nl/webmapper/maps/pw-1985/{z}/{x}/{y}.png', {
+    // https://images.huygens.knaw.nl/webmapper/maps/pw-1985/{z}/{x}/{y}.png
+    layer1985 = L.tileLayer('https://tiles.create.humanities.uva.nl/atm/publieke-werken-1985/{z}/{x}/{y}.png', {
         attribution: 'map provided by Jan Hartmann / HicSuntLeones',
         maxZoom: 19,
         minZoom:13

@@ -85,6 +85,11 @@ if(!isset($_GET['bron'])){
 		<input type="checkbox" name="verpondingskohier1802" id="verpondingskohier1802" />
 		<label for="verpondingskohier1802">verpondingskohier 1802</label>
 		
+		<br />
+		
+		<input type="checkbox" name="blauweknoop" id="blauweknoop" />
+		<label for="blauweknoop">blauwe knoop</label>
+
 		
 		
 		

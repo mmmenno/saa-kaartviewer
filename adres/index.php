@@ -59,6 +59,10 @@ if(isset($params['woningkaarten'])){
     include("query-woningkaarten.php");
 }
 
+if(isset($params['blauweknoop'])){
+    include("query-blauweknoop.php");
+}
+
 
 
 //print_r($addressresults);
